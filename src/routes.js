@@ -1,8 +1,12 @@
-const routes = (app) => {
-    // Testing if the connection with the routes exists
-    app.get('/healthcheck', (req, res) => {res.sendStatus(200)})
+import express from 'express'
+
+const router = express.Router()
+
+router.get('/healthcheck', (req, res) => {res.sendStatus(200)})
 
 
-}
 
-export default routes
+
+
+
+export default router

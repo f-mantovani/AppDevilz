@@ -3,7 +3,7 @@ import 'dotenv/config'
 import express from 'express'
 import cors from 'cors'
 import { connect } from './src/database/dbConnect.js'
-import routes from './src/routes.js'
+import router from './src/routes.js'
 
  const initializeApp = () => {
     connect()
@@ -13,7 +13,7 @@ import routes from './src/routes.js'
 
     app.use(express.json())
 
-    routes(app)
+   app.use('/', router)
 
     return app
 
