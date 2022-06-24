@@ -4,6 +4,7 @@ import {
     getUserReq,
     encryptPassword,
     validateUserInput,
+    validateCredential,
 } from './user.helperFunctions.js';
 
 import User from '../database/services/user.service.js';
@@ -16,6 +17,10 @@ const userControllers = {
             const { name, email, password } = getUserReq(req);
 
             validateUserInput(email, password, name);
+
+            const userFromDB = await User.findUserByEmail({email})
+
+            validateCredential(userFromDB, '400', 'User already exists')
 
             const passwordHashed = await encryptPassword(password);
 

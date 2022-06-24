@@ -7,6 +7,15 @@ const UserClass = {
 
         return response
         
+    },
+
+    findUserByEmail: async (email) => {
+
+        const response = await User.findOne(email)
+
+        console.log(response)
+
+        return response
     }
    
 };

@@ -34,6 +34,23 @@ export const validateUserInput = (email, password, name) => {
 
 }
 
+export const validateCredential = (credential, errorCode, errorMessage) => {
+
+    if (credential){
+
+        const error = new Error
+
+        error.status = errorCode
+
+        error.message = errorMessage
+        throw error
+
+    }
+
+}
+
+
+
 export const encryptPassword = async (password) => {
 
     const salt = await bcrypt.genSalt(12)
