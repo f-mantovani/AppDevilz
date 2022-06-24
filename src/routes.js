@@ -6,7 +6,7 @@ const router = express.Router()
 // Server checking 
 router.get('/healthcheck', (req, res) => {res.sendStatus(200)})
 
-router.get('/user', userControllers.signup)
+router.post('/user', userControllers.signup)
 
 
 

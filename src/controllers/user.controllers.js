@@ -1,28 +1,36 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import { getUserReq } from './user.helperFunctions.js';
+import {
+    getUserReq,
+    encryptPassword,
+    validateUserInput,
+} from './user.helperFunctions.js';
 
-import User from '../database/services/user.service.js'
+import User from '../database/services/user.service.js';
 
-import logger from '../utils/logger.js'
+import logger from '../utils/logger.js';
 
 const userControllers = {
     signup: async (req, res) => {
         try {
-           
-            const { name, email, password } = getUserReq(req)
-           
-            const user = { name, email, password }
+            const { name, email, password } = getUserReq(req);
 
-            const newUser = await User.createUser({user})
-            
-            return res.status(200).json({"test":"success", newUser})
-            
+            validateUserInput(email, password, name);
+
+            const passwordHashed = await encryptPassword(password);
+
+            const user = { name, email, password: passwordHashed };
+
+            const newUser = await User.createUser({ user });
+
+            return res.status(200).json({ test: 'success', newUser });
         } catch (error) {
-            return res.status(500).json({error})
+            return res
+                .status(error.status || 500)
+                .json({ place: 'Creating User', 
+                        error: error.message });
         }
-    }
-}
+    },
+};
 
-export default userControllers
-
+export default userControllers;
