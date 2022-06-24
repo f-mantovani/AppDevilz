@@ -7,6 +7,7 @@ const router = express.Router()
 router.get('/healthcheck', (req, res) => {res.sendStatus(200)})
 
 router.post('/user', userControllers.signup)
+router.post('/login', userControllers.login)
 
 
 

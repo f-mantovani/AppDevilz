@@ -13,11 +13,9 @@ const UserClass = {
 
         const response = await User.findOne(email)
 
-        console.log(response)
-
         return response
-    }
-   
+    },
+ 
 };
 
 export default UserClass;

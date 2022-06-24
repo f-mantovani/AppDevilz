@@ -43,13 +43,12 @@ export const validateCredential = (credential, errorCode, errorMessage) => {
         error.status = errorCode
 
         error.message = errorMessage
+
         throw error
 
     }
 
 }
-
-
 
 export const encryptPassword = async (password) => {
 
@@ -58,4 +57,20 @@ export const encryptPassword = async (password) => {
     const hashed = await bcrypt.hash(password, salt)
 
     return hashed
+}
+
+export const validateLogin = async (password, passwordFromDB) => {
+
+    const comparePassword = await bcrypt.compare(password, passwordFromDB)
+
+    return comparePassword
+    
+}
+
+export const generateToken = async (payload) => {
+
+    const newToken = jwt.sign(payload, process.env.SECRET_HASH, {expiresIn: '1d'});
+
+    return newToken
+
 }
