@@ -15,6 +15,13 @@ const UserClass = {
 
         return response
     },
+
+    deleteUserByEmail: async (email) => {
+        console.log(email)
+        const response = await User.deleteOne(email);
+
+        return response
+    }
  
 };
 

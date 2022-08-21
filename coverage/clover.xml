@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1660910327423" clover="3.2.0">
+  <project timestamp="1660910327423" name="All files">
+    <metrics statements="98" coveredstatements="91" conditionals="11" coveredconditionals="10" methods="19" coveredmethods="16" elements="128" coveredelements="117" complexity="0" loc="98" ncloc="98" packages="10" files="18" classes="18"/>
+    <package name="AppDevilz">
+      <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="app.js" path="C:\Users\Felipe\Desktop\AppDevilz\app.js">
+        <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="AppDevilz.src">
+      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <file name="routes.js" path="C:\Users\Felipe\Desktop\AppDevilz\src\routes.js">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="AppDevilz.src.controllers">
+      <metrics statements="30" coveredstatements="25" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="2"/>
+      <file name="formation.controllers.js" path="C:\Users\Felipe\Desktop\AppDevilz\src\controllers\formation.controllers.js">
+        <metrics statements="6" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+      </file>
+      <file name="user.controllers.js" path="C:\Users\Felipe\Desktop\AppDevilz\src\controllers\user.controllers.js">
+        <metrics statements="24" coveredstatements="24" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="12" count="5" type="stmt"/>
+        <line num="13" count="5" type="stmt"/>
+        <line num="15" count="5" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
+        <line num="19" count="2" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="29" count="1" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
+        <line num="36" count="4" type="stmt"/>
+        <line num="41" count="5" type="stmt"/>
+        <line num="42" count="5" type="stmt"/>
+        <line num="44" count="5" type="stmt"/>
+        <line num="46" count="3" type="stmt"/>
+        <line num="48" count="3" type="stmt"/>
+        <line num="50" count="2" type="stmt"/>
+        <line num="52" count="2" type="stmt"/>
+        <line num="54" count="1" type="stmt"/>
+        <line num="60" count="1" type="stmt"/>
+        <line num="62" count="1" type="stmt"/>
+        <line num="64" count="4" type="stmt"/>
+      </file>
+    </package>
+    <package name="AppDevilz.src.controllers.helperFunctions.generalFunctions">
+      <metrics statements="2" coveredstatements="2" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
+      <file name="errorHandlingFunction.js" path="C:\Users\Felipe\Desktop\AppDevilz\src\controllers\helperFunctions\generalFunctions\errorHandlingFunction.js">
+        <metrics statements="2" coveredstatements="2" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="8" type="stmt"/>
+      </file>
+    </package>
+    <package name="AppDevilz.src.controllers.helperFunctions.userHelpers">
+      <metrics statements="26" coveredstatements="26" conditionals="9" coveredconditionals="9" methods="6" coveredmethods="6"/>
+      <file name="generateToken.js" path="C:\Users\Felipe\Desktop\AppDevilz\src\controllers\helperFunctions\userHelpers\generateToken.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+      </file>
+      <file name="passwordHandlers.js" path="C:\Users\Felipe\Desktop\AppDevilz\src\controllers\helperFunctions\userHelpers\passwordHandlers.js">
+        <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="16" count="2" type="stmt"/>
+      </file>
+      <file name="userReq.js" path="C:\Users\Felipe\Desktop\AppDevilz\src\controllers\helperFunctions\userHelpers\userReq.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="10" type="stmt"/>
+        <line num="13" count="10" type="stmt"/>
+      </file>
+      <file name="validateCredentials.js" path="C:\Users\Felipe\Desktop\AppDevilz\src\controllers\helperFunctions\userHelpers\validateCredentials.js">
+        <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="7" type="cond" truecount="2" falsecount="0"/>
+        <line num="5" count="3" type="stmt"/>
+        <line num="7" count="3" type="stmt"/>
+        <line num="9" count="3" type="stmt"/>
+        <line num="11" count="3" type="stmt"/>
+      </file>
+      <file name="validateUserInput.js" path="C:\Users\Felipe\Desktop\AppDevilz\src\controllers\helperFunctions\userHelpers\validateUserInput.js">
+        <metrics statements="7" coveredstatements="7" conditionals="7" coveredconditionals="7" methods="1" coveredmethods="1"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="4" count="10" type="cond" truecount="2" falsecount="0"/>
+        <line num="6" count="10" type="cond" truecount="5" falsecount="0"/>
+        <line num="8" count="5" type="stmt"/>
+        <line num="10" count="5" type="stmt"/>
+        <line num="12" count="5" type="stmt"/>
+        <line num="14" count="5" type="stmt"/>
+      </file>
+    </package>
+    <package name="AppDevilz.src.database">
+      <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <file name="dbConnect.js" path="C:\Users\Felipe\Desktop\AppDevilz\src\database\dbConnect.js">
+        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="AppDevilz.src.database.models">
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="Formation.model.js" path="C:\Users\Felipe\Desktop\AppDevilz\src\database\models\Formation.model.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+      </file>
+      <file name="User.model.js" path="C:\Users\Felipe\Desktop\AppDevilz\src\database\models\User.model.js">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="3" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="AppDevilz.src.database.services">
+      <metrics statements="11" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="3"/>
+      <file name="formations.service.js" path="C:\Users\Felipe\Desktop\AppDevilz\src\database\services\formations.service.js">
+        <metrics statements="3" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+      </file>
+      <file name="user.service.js" path="C:\Users\Felipe\Desktop\AppDevilz\src\database\services\user.service.js">
+        <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="14" count="6" type="stmt"/>
+        <line num="16" count="6" type="stmt"/>
+        <line num="20" count="2" type="stmt"/>
+        <line num="21" count="2" type="stmt"/>
+        <line num="23" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="AppDevilz.src.routes">
+      <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="auth.routes.js" path="C:\Users\Felipe\Desktop\AppDevilz\src\routes\auth.routes.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+      </file>
+      <file name="formation.routes.js" path="C:\Users\Felipe\Desktop\AppDevilz\src\routes\formation.routes.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="AppDevilz.src.utils">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="logger.js" path="C:\Users\Felipe\Desktop\AppDevilz\src\utils\logger.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="11" count="3" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>

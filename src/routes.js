@@ -1,13 +1,17 @@
-import express from 'express'
-import userControllers from './controllers/user.controllers.js'
+import { Router }from 'express'
 
-const router = express.Router()
+import authRoutes from './routes/auth.routes.js'
+import formationRoutes from './routes/formation.routes.js'
+
+const router = Router()
 
 // Server checking 
 router.get('/healthcheck', (req, res) => {res.sendStatus(200)})
 
-router.post('/user', userControllers.signup)
-router.post('/login', userControllers.login)
+
+router.use('/auth', authRoutes)
+
+router.use('/formations', formationRoutes)
 
 
 

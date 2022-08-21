@@ -22,19 +22,26 @@ const userSchema = new mongoose.Schema(
         },
         position: {
             type: String,
-            // Here maybe it's a better option to use ENUMs
+            enum: ['QB', 'WR', 'OL', 'RB', 'TE', 'FB', 'DL', 'LB', 'CB', 'S']
         },
         shirtNumber: {
             type: Number,
         },
-        player: {
+        isPlayerActive: {
             type: Boolean,
+            default: true,
         },
-        techinicalStaff: {
+        isCT: {
             type: Boolean,
+            default: false,
         },
-        administration: {
+        isAdmin: {
             type: Boolean,
+            default: false,
+        },
+        isAccepted: {
+            type: Boolean,
+            default: false,
         },
     },
     { timestamps: true }

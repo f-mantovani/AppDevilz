@@ -5,13 +5,17 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules DATABASE_URI=mongodb://localhost:27017/devilzDB_test npx jest --collectCoverage --forceExit --detectOpenHandles"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/F-Mantovani/AppDevilz.git"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "transform": {}
   },
   "keywords": [],
   "author": "",

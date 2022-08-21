@@ -1,21 +1,30 @@
-// import mongoose from 'mongoose';
+import mongoose from 'mongoose';
 
-// const formationSchema = new mongoose.Schema(
-//     {
-//         name: {
-//             type: String,
-//             required: true,
-//         },
-//         sector: {
-//             type: String,
-//             // Maybe another ENUMs here
-//         },
-//         description: {
-//             type: String,
-//             required: true,
-//         },
-//     },
-//     { timestamps: true }
-// );
+const { Schema, model } = mongoose
 
-// export default mongoose.model('Formation', formationSchema);
+const formationSchema = new Schema(
+    {
+        name: {
+            type: String,
+            required: true,
+        },
+        sector: {
+            type: String,
+            enum: ['attack', 'defense', 'special teams'],
+            default: 'attack'
+        },
+        description: {
+            type: String,
+            required: true,
+        },
+        imageURL: {
+            type: String,
+        },
+        liveImage: {
+            type: String,
+        },
+    },
+    { timestamps: true }
+);
+
+export default model('Formation', formationSchema);
