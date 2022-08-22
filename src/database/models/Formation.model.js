@@ -23,6 +23,10 @@ const formationSchema = new Schema(
         liveImage: {
             type: String,
         },
+        plays: {
+            type: Schema.Types.ObjectId,
+          ref: 'Play',
+        }
     },
     { timestamps: true }
 );
