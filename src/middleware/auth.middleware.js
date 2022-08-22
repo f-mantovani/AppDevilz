@@ -6,8 +6,6 @@ export const isAuthenticated = (req, res, next) => {
 	try {
 		const bearer  = req.get('Authorization');
 
-    console.log(bearer)
-
 		validateCredential(!bearer, 401, 'Access denied - unauthorized user');
 
 		const token = bearer.split(' ')[1];

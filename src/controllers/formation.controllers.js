@@ -1,7 +1,7 @@
 import Formation from '../database/services/formations.service.js';
 import { getFormationReq } from './helperFunctions/formationHelpers/getFormationReq.js';
 import { handleError } from './helperFunctions/generalFunctions/errorHandlingFunction.js';
-import { validateEditPrivilege } from './helperFunctions/generalFunctions/validateEditPrivilege.js';
+import { validateEditPrivilege } from '../middleware/validateEditPrivilege.middleware.js';
 
 
 const formationController = {
@@ -25,8 +25,8 @@ const formationController = {
 
         try {
             // validateEditPrivilege(isAdmin, isCT)
-
-            const updatedFormation = await Formation.updateFormation()
+            console.log('chegou no update')
+            // const updatedFormation = await Formation.updateFormation()
 
            
         } catch (error) {
