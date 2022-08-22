@@ -56,6 +56,7 @@ const userControllers = {
 				name: userFromDB.name,
 				email: userFromDB.email,
 				isAdmin: userFromDB.isAdmin,
+				isCT: userFromDB.isCT,
 			};
 
 			const token = await generateToken(payload);

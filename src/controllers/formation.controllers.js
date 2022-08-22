@@ -14,6 +14,7 @@ const formationController = {
             res.status(200).json({ newFormation });
             
         } catch (error) {
+           
             handleError(res, error, 'Creating formation')
         }
 
@@ -23,12 +24,13 @@ const formationController = {
         const { name, sector, description, imageURL, liveImage, formationId, isAdmin, isCT } = getFormationReq(req);
 
         try {
-            validateEditPrivilege(isAdmin, isCT)
+            // validateEditPrivilege(isAdmin, isCT)
 
             const updatedFormation = await Formation.updateFormation()
 
            
         } catch (error) {
+            console.log(error)
             handleError(res, error, 'updating formation')
         }
 

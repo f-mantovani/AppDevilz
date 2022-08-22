@@ -1,4 +1,6 @@
-export const validateEditPrivilege = (isAdmin, isCT) => {
+export const validateEditPrivilege = (req, res, next) => {
+	const { isAdmin, isCT } = req.user
+
 	if (!isAdmin && !isCT) {
 		const error = new Error
 
@@ -9,5 +11,6 @@ export const validateEditPrivilege = (isAdmin, isCT) => {
     throw error
 	}
 
-  return
+ next()
+
 };
