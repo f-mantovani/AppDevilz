@@ -25,7 +25,17 @@ const formationController = {
 
 			res.status(200).json(updatedFormation);
 		} catch (error) {
-			handleError(res, error, 'updating formation');
+			handleError(res, error, 'Updating formation');
+		}
+	},
+
+	getAll: async (req, res) => {
+		try {
+			const formations = await Formation.getAllFormations();
+
+			res.status(200).json(formations);
+		} catch (error) {
+			handleError(res, error, 'Getting all formations');
 		}
 	},
 };
