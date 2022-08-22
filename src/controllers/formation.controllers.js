@@ -38,6 +38,20 @@ const formationController = {
 			handleError(res, error, 'Getting all formations');
 		}
 	},
+
+	getOne: async (req, res) => {
+		try {
+			const { formationId } = getFormationReq(req)
+
+			// console.log(formationId)
+
+			const formation = await Formation.getOneFormation(formationId)
+
+			res.status(200).json(formation)
+		} catch (error) {
+			handleError(res, error, 'Getting one formation')
+		}
+	}
 };
 
 export default formationController;

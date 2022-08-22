@@ -7,6 +7,8 @@ const router = Router();
 
 router.get('/', FormationCrontrollers.getAll);
 
+router.get('/one/:formationId', FormationCrontrollers.getOne)
+
 router.use(validateEditPrivilege);
 
 router.post('/new', FormationCrontrollers.create);
