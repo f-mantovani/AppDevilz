@@ -9,7 +9,7 @@ const FormationClass = {
     },
 
     updateFormation: async (id, updatedFormation) => {
-        const response = await Formation.findByIdAndUpdate(id, updatedFormation)
+        const response = await Formation.findByIdAndUpdate(id, updatedFormation, { new: true })
 
         return response
     },

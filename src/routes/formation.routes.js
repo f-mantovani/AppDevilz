@@ -6,7 +6,7 @@ import { validateEditPrivilege } from '../middleware/validateEditPrivilege.middl
 const router = Router()
 
 router.post('/new', FormationCrontrollers.create )
-router.put('/edit', validateEditPrivilege, FormationCrontrollers.update )
+router.put('/edit/:formationId', validateEditPrivilege, FormationCrontrollers.update )
 
 
 export default router
