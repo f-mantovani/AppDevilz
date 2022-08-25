@@ -11,6 +11,7 @@ const PlayClass = {
 		const response = await Play.findByIdAndUpdate(playId, updatedInfo, {
 			new: true,
 			runValidators: true,
+			context: 'query',
 		});
 
 		return response;

@@ -1,20 +1,20 @@
 import { Router } from 'express';
 
-import FormationCrontrollers from '../controllers/formation.controllers.js';
+import formationCrontrollers from '../controllers/formation.controllers.js';
 import { validateEditPrivilege } from '../middleware/validateEditPrivilege.middleware.js';
 
 const router = Router();
 
-router.get('/', FormationCrontrollers.getAll);
+router.get('/', formationCrontrollers.getAll);
 
-router.get('/one/:formationId', FormationCrontrollers.getOne)
+router.get('/one/:formationId', formationCrontrollers.getOne)
 
 router.use(validateEditPrivilege);
 
-router.post('/new', FormationCrontrollers.create);
+router.post('/', formationCrontrollers.create);
 
-router.put('/edit/:formationId', FormationCrontrollers.update);
+router.put('/edit/:formationId', formationCrontrollers.update);
 
-router.delete('/delete/:formationId', FormationCrontrollers.deleteOne)
+router.delete('/delete/:formationId', formationCrontrollers.deleteOne)
 
 export default router;

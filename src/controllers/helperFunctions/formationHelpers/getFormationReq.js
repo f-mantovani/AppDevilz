@@ -1,4 +1,4 @@
-export const getFormationReq = ({ body, params, user }) => {
+export const getFormationReq = ({ body, params}) => {
 	const payload = {
 		name: body.name,
 
@@ -11,10 +11,6 @@ export const getFormationReq = ({ body, params, user }) => {
 		liveImage: body.liveImage,
 
     formationId: params.formationId,
-
-    isAdmin: user?.isAdmin || false,
-
-    isCT: user?.isCT || false,
 
 	};
 

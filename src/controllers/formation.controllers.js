@@ -7,8 +7,10 @@ const formationController = {
 	create: async (req, res) => {
 		const { name, sector, description, imageURL, liveImage } = getFormationReq(req);
 
+		const formationInfo = { name, sector, description, imageURL, liveImage };
+
 		try {
-			const newFormation = await Formation.createFormation({ name, sector, description });
+			const newFormation = await Formation.createFormation(formationInfo);
 
 			res.status(200).json({ newFormation });
 		} catch (error) {
@@ -57,7 +59,7 @@ const formationController = {
 			const { formationId } = getFormationReq(req);
 
 			const formation = await Formation.deleteOneFormation(formationId);
-			await Play.deleteManyPlays(formationId)
+			await Play.deleteManyPlays(formationId);
 
 			res.status(200).json(formation);
 		} catch (error) {
