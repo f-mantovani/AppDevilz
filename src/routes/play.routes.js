@@ -6,6 +6,7 @@ import playControllers from '../controllers/play.controllers.js'
 const router = Router()
 
 router.get('/one/:playId', playControllers.getOne)
+router.get('/', playControllers.getAll)
 
 router.use(validateEditPrivilege)
 

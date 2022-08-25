@@ -47,8 +47,12 @@ const playControllers = {
 			handleError(res, error, 'Getting a play');
 		}
 	},
+
 	getAll: async (req, res) => {
 		try {
+			const playbook = await Play.getAllPlays()
+
+			res.status(200).json(playbook)
 		} catch (error) {
 			handleError(res, error, 'Getting all plays');
 		}
