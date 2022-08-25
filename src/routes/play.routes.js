@@ -8,5 +8,6 @@ const router = Router()
 router.use(validateEditPrivilege)
 
 router.post('/', playControllers.create)
+router.put('/update/:playId', playControllers.update)
 
 export default router

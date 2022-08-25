@@ -22,7 +22,15 @@ const playControllers = {
 	},
 
 	update: async (req, res) => {
+		const { name, formation, playImage, playId } = getPlayReq(req);
+
+		const updateInfo = { name, formation, playImage };
+
 		try {
+			const updatedPlay = await Play.updatePlay(playId, updateInfo)
+
+			res.status(200).json(updatedPlay)
+
 		} catch (error) {
 			handleError(res, error, 'Updating a play');
 		}

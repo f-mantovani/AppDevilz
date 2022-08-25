@@ -4,7 +4,7 @@ export const validateEditPrivilege = (req, res, next) => {
 	const { isAdmin, isCT } = req.user;
 
 	try {
-		if (!isAdmin || !isCT) {
+		if (!isAdmin && !isCT) {
 			const error = new Error();
 	
 			error.status = 401;
