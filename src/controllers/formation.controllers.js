@@ -1,4 +1,5 @@
 import Formation from '../database/services/formations.service.js';
+import Play from '../database/services/plays.service.js';
 import { getFormationReq } from './helperFunctions/formationHelpers/getFormationReq.js';
 import { handleError } from './helperFunctions/generalFunctions/errorHandlingFunction.js';
 
@@ -56,6 +57,7 @@ const formationController = {
 			const { formationId } = getFormationReq(req);
 
 			const formation = await Formation.deleteOneFormation(formationId);
+			await Play.deleteManyPlays(formationId)
 
 			res.status(200).json(formation);
 		} catch (error) {

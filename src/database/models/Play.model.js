@@ -1,6 +1,8 @@
 import mongoose from 'mongoose';
 
-const playSchema = new mongoose.Schema(
+const { Schema, model } = mongoose
+
+const playSchema = new Schema(
 	{
 		name: {
 			type: String,
@@ -9,7 +11,7 @@ const playSchema = new mongoose.Schema(
 		formation: {
 			type: Schema.Types.ObjectId,
 			ref: 'Formation',
-            required: true
+			required: true,
 		},
 		playImage: {
 			type: String,
@@ -18,4 +20,4 @@ const playSchema = new mongoose.Schema(
 	{ timestamps: true }
 );
 
-export default mongoose.model('Play', playSchema);
+export default model('Play', playSchema);

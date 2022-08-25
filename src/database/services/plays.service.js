@@ -22,6 +22,12 @@ const PlayClass = {
 		return response;
 	},
 
+	getAllPlays: async () => {
+		const response = await Play.find();
+
+		return response;
+	},
+
 	deleteOnePlay: async playId => {
 		const response = await Play.findByIdAndDelete(playId);
 
