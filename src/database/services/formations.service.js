@@ -8,7 +8,10 @@ const FormationClass = {
 	},
 
 	updateFormation: async (id, updatedFormation) => {
-		const response = await Formation.findByIdAndUpdate(id, updatedFormation, { new: true });
+		const response = await Formation.findByIdAndUpdate(id, updatedFormation, {
+			new: true,
+			runValidators: true,
+		});
 
 		return response;
 	},

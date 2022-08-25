@@ -8,7 +8,10 @@ const PlayClass = {
 	},
 
 	updatePlay: async (playId, updatedInfo) => {
-		const response = await Play.findByIdAndUpdate(playId, updatedInfo);
+		const response = await Play.findByIdAndUpdate(playId, updatedInfo, {
+			new: true,
+			runValidators: true,
+		});
 
 		return response;
 	},
