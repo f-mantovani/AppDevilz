@@ -1,216 +1,202 @@
-import { app } from '../app.js';
-import request from 'supertest';
 import User from '../src/database/services/user.service';
-import { connect, disconnect } from '../src/database/dbConnect.js'
+import { connect, disconnect } from '../src/database/dbConnect.js';
 import { encryptPassword } from '../src/controllers/helperFunctions/userHelpers/passwordHandlers';
+import { requestRoute } from './helperTestFunctions/requestRoute.js';
+import { expectAbstraction } from './helperTestFunctions/expectAbstraction.js';
 
 let id, token;
 const fakeId = 96816518918;
 const fakeToken = 'thisisafaketokenfortesting16518916';
 
 describe('test the DevilzApp API', () => {
-    beforeAll(async () => {
-        // Create a test user
-        await connect()
+	beforeAll(async () => {
+		// Create a test user
+		await connect();
 
-        const password = await encryptPassword('okay')
+		const password = await encryptPassword('okay');
 
-        const user = {
-            name: 'admin',
-            email: 'admin@admin.com',
-            password,
-        };
+		const user = {
+			name: 'admin',
+			email: 'admin@admin.com',
+			password,
+		};
 
-        await User.createUser({user});
-    });
+		await User.createUser(user);
+	});
 
-    afterAll(async () => {
-        await User.deleteUserByEmail({ email: 'admin@admin.com' });
+	afterAll(async () => {
+		await User.deleteUserByEmail({ email: 'admin@admin.com' });
 
-        disconnect()
-    });
+		disconnect();
+	});
 
-    describe('POST/login', () => {
-        it('should authenticate the user and sign in', async () => {
-            const user = {
-                email: 'admin@admin.com',
-                password: 'okay',
-            };
+	describe('POST/login', () => {
+		it('should authenticate the user and sign in', async () => {
+			const user = {
+				email: 'admin@admin.com',
+				password: 'okay',
+			};
 
-            const res = await request(app).post('/auth/login').send(user);
+			const res = await requestRoute(user, '/auth/login');
 
-            token = res.body.token;
+			token = res.body.token;
 
-            expect(res.status).toEqual(200);
-            expect(res.body).toEqual(
-                expect.objectContaining({
-                    token: res.body.token,
-                })
-            );
-        });
+			expectAbstraction(res, 200, {token});
+		});
 
-        it('should not sign in, password cannot be empty', async () => {
-            const user = {
-                email: 'admin@admin.com',
-                password: '',
-            };
+		it('should not sign in, password cannot be empty', async () => {
+			const user = {
+				email: 'admin@admin.com',
+				password: '',
+			};
 
-            const res = await request(app).post('/auth/login').send(user);
+			const res = await requestRoute(user, '/auth/login');
 
-            expect(res.status).toEqual(400);
-            expect(res.body).toEqual(
-                expect.objectContaining({
-                    Place: 'Login',
-                    Error: 'All fields are required',
-                })
-            );
-        });
+            const expectedObject = {
+                Place: 'Login',
+                Error: 'All fields are required',
+            }
 
-        it('should not sign in, email cannot be empty', async () => {
-            const user = {
-                email: '',
-                password: 'okay',
-            };
+            expectAbstraction(res, 400, expectedObject);
+		});
 
-            const res = await request(app).post('/auth/login').send(user);
+		it('should not sign in, email cannot be empty', async () => {
+			const user = {
+				email: '',
+				password: 'okay',
+			};
 
-            expect(res.status).toEqual(400);
-            expect(res.body).toEqual(
-                expect.objectContaining({
-                    Place: 'Login',
-                    Error: 'All fields are required',
-                })
-            );
-        });
+			const res = await requestRoute(user, '/auth/login');
 
-        it('should not sign in, incorrect email', async () => {
-            const user = {
-                email: 'johnny@gmail.com',
-                password: 'okay',
-            };
+            const expectedObject = {
+                Place: 'Login',
+                Error: 'All fields are required',
+            }
 
-            const res = await request(app).post('/auth/login').send(user);
+            expectAbstraction(res, 400, expectedObject);
+		});
 
-            expect(res.status).toEqual(400);
-            expect(res.body).toEqual(
-                expect.objectContaining({
-                    Place: 'Login',
-                    Error: 'User and/or Password incorrect',
-                })
-            );
-        });
+		it('should not sign in, incorrect email', async () => {
+			const user = {
+				email: 'johnny@gmail.com',
+				password: 'okay',
+			};
 
-        it('should not sign in, incorrect password', async () => {
-            const user = {
-                email: 'admin@admin.com',
-                password: 'johnybegood',
-            };
+			const res = await requestRoute(user, '/auth/login');
 
-            const res = await request(app).post('/auth/login').send(user);
+            const expectedObject = {
+                Place: 'Login',
+			    Error: 'User and/or Password incorrect',
+            }
 
-            expect(res.status).toEqual(400);
-            expect(res.body).toEqual(
-                expect.objectContaining({
-                    Place: 'Login',
-                    Error: 'User and/or Password incorrect',
-                })
-            );
-        });
-    });
+            expectAbstraction(res, 400, expectedObject);
+		});
 
-    describe('POST/signup', () => {
-        it('should create a new user', async () => {
-            const user = {
-                name: 'johny',
-                email: 'johny@gmail.com',
-                password: 'johnybegood',
-            };
+		it('should not sign in, incorrect password', async () => {
+			const user = {
+				email: 'admin@admin.com',
+				password: 'johnybegood',
+			};
 
-            const res = await request(app).post('/auth/signup').send(user);
+			const res = await requestRoute(user, '/auth/login');
 
-            expect(res.status).toEqual(200);
-            expect(res.body).toEqual(
-                expect.objectContaining({
-                    userDisplay: {
-                        name: 'johny',
-                        email: 'johny@gmail.com',
-                    },
-                })
-            );
+            const expectedObject = {
+                Place: 'Login',
+				Error: 'User and/or Password incorrect',
+            }
 
-            await User.deleteUserByEmail({ email: 'johny@gmail.com' });
-        });
+            expectAbstraction(res, 400, expectedObject);
+		});
+	});
 
-        it('should not create a new user, user already exists', async () => {
-            const user = {
-                name: 'admin',
-                email: 'admin@admin.com',
-                password: 'okay',
-            };
+	describe('POST/signup', () => {
+		it('should create a new user', async () => {
+			const user = {
+				name: 'johny',
+				email: 'johny@gmail.com',
+				password: 'johnybegood',
+			};
 
-            const res = await request(app).post('/auth/signup').send(user);
+			const res = await requestRoute(user, '/auth/signup');
 
-            expect(res.status).toEqual(400);
-            expect(res.body).toEqual(
-                expect.objectContaining({
-                    Place: 'Creating user',
-                    Error: 'User already exists',
-                })
-            );
-        });
+            const expectedObject = {
+                userDisplay: {
+                    name: 'johny',
+                    email: 'johny@gmail.com',
+                },
+            }
 
-        it('should not create a new user, name is required', async () => {
-            const user = {
-                name: '',
-                email: 'johny@gmail.com',
-                password: 'johnybegood',
-            };
+            expectAbstraction(res, 200, expectedObject);
 
-            const res = await request(app).post('/auth/signup').send(user);
+			await User.deleteUserByEmail({ email: 'johny@gmail.com' });
+		});
 
-            expect(res.status).toEqual(400);
-            expect(res.body).toEqual(
-                expect.objectContaining({
-                    Place: 'Creating user',
-                    Error: 'All fields are required',
-                })
-            );
-        });
+		it('should not create a new user, user already exists', async () => {
+			const user = {
+				name: 'admin',
+				email: 'admin@admin.com',
+				password: 'okay',
+			};
 
-        it('should not create a new user, email is required', async () => {
-            const user = {
-                name: 'johny',
-                email: '',
-                password: 'johnybegood',
-            };
+			const res = await requestRoute(user, '/auth/signup');
 
-            const res = await request(app).post('/auth/signup').send(user);
+            const expectedObject = {
+                Place: 'Creating user',
+				Error: 'User already exists',
+            }
 
-            expect(res.status).toEqual(400);
-            expect(res.body).toEqual(
-                expect.objectContaining({
-                    Place: 'Creating user',
-                    Error: 'All fields are required',
-                })
-            );
-        });
+            expectAbstraction(res, 400, expectedObject);
+		});
 
-        it('should not create a new user, password is required', async () => {
-            const user = {
-                name: 'johny',
-                email: 'johny@gmail.com',
-                password: '',
-            };
+		it('should not create a new user, name is required', async () => {
+			const user = {
+				name: '',
+				email: 'johny@gmail.com',
+				password: 'johnybegood',
+			};
 
-            const res = await request(app).post('/auth/signup').send(user);
+			const res = await requestRoute(user, '/auth/signup');
 
-            expect(res.status).toEqual(400);
-            expect(res.body).toEqual(
-                expect.objectContaining({
-                    Place: 'Creating user',
-                    Error: 'All fields are required',
-                })
-            );
-        });
-    });
+            const expectedObject = {
+                Place: 'Creating user',
+				Error: 'All fields are required',
+            }
+
+            expectAbstraction(res, 400, expectedObject);
+		});
+
+		it('should not create a new user, email is required', async () => {
+			const user = {
+				name: 'johny',
+				email: '',
+				password: 'johnybegood',
+			};
+
+            const res = await requestRoute(user, '/auth/signup');
+
+            const expectedObject = {
+                Place: 'Creating user',
+				Error: 'All fields are required',
+            }
+
+            expectAbstraction(res, 400, expectedObject);
+		});
+
+		it('should not create a new user, password is required', async () => {
+			const user = {
+				name: 'johny',
+				email: 'johny@gmail.com',
+				password: '',
+			};
+
+            const res = await requestRoute(user, '/auth/signup');
+
+            const expectedObject = {
+                Place: 'Creating user',
+				Error: 'All fields are required',
+            }
+
+            expectAbstraction(res, 400, expectedObject);
+		});
+	});
 });

@@ -1,42 +1,41 @@
-import Formation from '../models/Formation.model.js'
+import Formation from '../models/Formation.model.js';
 
 const FormationClass = {
-    createFormation: async ( newFormation ) => {
-        
-        const response = await Formation.create( newFormation )
-       
-        return response
-    },
+	createFormation: async newFormation => {
+		const response = await Formation.create(newFormation);
 
-    updateFormation: async (id, updatedFormation) => {
-        const response = await Formation.findByIdAndUpdate(id, updatedFormation, { new: true })
+		return response;
+	},
 
-        return response
-    },
+	updateFormation: async (id, updatedFormation) => {
+		const response = await Formation.findByIdAndUpdate(id, updatedFormation, { new: true });
 
-    getAllFormations: async () => {
-        const response = await Formation.find()
+		return response;
+	},
 
-        return response
-    },
+	getAllFormations: async () => {
+		const response = await Formation.find();
 
-    getOneFormation: async (id) => {
-        const response = await Formation.findById(id)
+		return response;
+	},
 
-        return response
-    },
-    
-    deleteOneFormation: async (id) => {
-        const response = await Formation.deleteOne({ _id: id})
+	getOneFormation: async id => {
+		const response = await Formation.findById(id);
 
-        return response
-    },
+		return response;
+	},
 
-    deleteFormations: async () => {
-        const response = await Formation.deleteMany()
+	deleteOneFormation: async id => {
+		const response = await Formation.deleteOne({ _id: id });
 
-        return response
-    },
+		return response;
+	},
+
+	deleteFormations: async () => {
+		const response = await Formation.deleteMany();
+
+		return response;
+	},
 };
 
 export default FormationClass;

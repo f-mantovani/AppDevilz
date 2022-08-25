@@ -41,17 +41,27 @@ const formationController = {
 
 	getOne: async (req, res) => {
 		try {
-			const { formationId } = getFormationReq(req)
+			const { formationId } = getFormationReq(req);
 
-			// console.log(formationId)
+			const formation = await Formation.getOneFormation(formationId);
 
-			const formation = await Formation.getOneFormation(formationId)
-
-			res.status(200).json(formation)
+			res.status(200).json(formation);
 		} catch (error) {
-			handleError(res, error, 'Getting one formation')
+			handleError(res, error, 'Getting one formation');
 		}
-	}
+	},
+
+	deleteOne: async (req, res) => {
+		try {
+			const { formationId } = getFormationReq(req);
+
+			const formation = await Formation.deleteOneFormation(formationId);
+
+			res.status(200).json(formation);
+		} catch (error) {
+			handleError(res, error, 'Deleting one formation');
+		}
+	},
 };
 
 export default formationController;

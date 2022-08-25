@@ -15,4 +15,6 @@ router.post('/new', FormationCrontrollers.create);
 
 router.put('/edit/:formationId', FormationCrontrollers.update);
 
+router.delete('/delete/:formationId', FormationCrontrollers.deleteOne)
+
 export default router;

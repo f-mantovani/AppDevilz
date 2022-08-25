@@ -22,7 +22,7 @@ const userControllers = {
 
 			const user = { name, email, password: passwordHashed };
 
-			const newUser = await User.createUser({ user });
+			const newUser = await User.createUser(user);
 
 			const userCreated = await User.findUserByEmail({ email });
 

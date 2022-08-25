@@ -1,7 +1,7 @@
 import User from '../models/User.model.js'
 
 const UserClass = {
-    createUser: async ({user}) => {
+    createUser: async (user) => {
 
         const response = await User.create(user)
 
@@ -17,7 +17,7 @@ const UserClass = {
     },
 
     deleteUserByEmail: async (email) => {
-        console.log(email)
+        // console.log(email)
         const response = await User.deleteOne(email);
 
         return response
