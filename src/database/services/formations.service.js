@@ -11,20 +11,20 @@ const FormationClass = {
 		const response = await Formation.findByIdAndUpdate(id, updatedFormation, {
 			new: true,
 			runValidators: true,
-			context: 'query'
+			context: 'query',
 		});
 
 		return response;
 	},
 
 	getAllFormations: async () => {
-		const response = await Formation.find().populate({path: 'plays', select: 'name -_id' })
+		const response = await Formation.find().populate({ path: 'plays', select: 'name -_id' });
 
 		return response;
 	},
 
 	getOneFormation: async id => {
-		const response = await Formation.findById(id).populate({path: 'plays', select: 'name -_id' });
+		const response = await Formation.findById(id).populate({ path: 'plays', select: 'name -_id' });
 
 		return response;
 	},

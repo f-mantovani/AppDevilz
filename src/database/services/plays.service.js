@@ -18,13 +18,19 @@ const PlayClass = {
 	},
 
 	getOnePlay: async playId => {
-		const response = await Play.findById(playId);
+		const response = await Play.findById(playId).populate({
+			path: 'formation',
+			select: 'name -_id',
+		});
 
 		return response;
 	},
 
 	getAllPlays: async () => {
-		const response = await Play.find();
+		const response = await Play.find().populate({
+			path: 'formation',
+			select: 'name -_id',
+		});
 
 		return response;
 	},

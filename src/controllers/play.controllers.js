@@ -35,8 +35,14 @@ const playControllers = {
 			handleError(res, error, 'Updating a play');
 		}
 	},
+
 	getOne: async (req, res) => {
+		const { playId } = getPlayReq(req);
+
 		try {
+			const play = await Play.getOnePlay(playId)
+
+			res.status(200).json(play)
 		} catch (error) {
 			handleError(res, error, 'Getting a play');
 		}
