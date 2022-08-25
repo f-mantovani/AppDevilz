@@ -12,7 +12,7 @@ const formationController = {
 		try {
 			const newFormation = await Formation.createFormation(formationInfo);
 
-			res.status(200).json({ newFormation });
+			res.status(201).json({ newFormation });
 		} catch (error) {
 			handleError(res, error, 'Creating formation');
 		}

@@ -31,7 +31,7 @@ const userControllers = {
 				email: userCreated.email,
 			};
 
-			return res.status(200).json({ userDisplay });
+			return res.status(201).json({ userDisplay });
 		} catch (error) {
 			handleError(res, error, 'Creating user');
 		}

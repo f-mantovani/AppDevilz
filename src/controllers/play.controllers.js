@@ -15,7 +15,7 @@ const playControllers = {
 
 			await Formation.updateFormation(formation, { $push: { plays: newPlay._id } });
 
-			res.status(200).json(newPlay);
+			res.status(201).json(newPlay);
 		} catch (error) {
 			handleError(res, error, 'Creating a play');
 		}
@@ -27,10 +27,9 @@ const playControllers = {
 		const updateInfo = { name, formation, playImage };
 
 		try {
-			const updatedPlay = await Play.updatePlay(playId, updateInfo)
+			const updatedPlay = await Play.updatePlay(playId, updateInfo);
 
-			res.status(200).json(updatedPlay)
-
+			res.status(200).json(updatedPlay);
 		} catch (error) {
 			handleError(res, error, 'Updating a play');
 		}
@@ -40,9 +39,9 @@ const playControllers = {
 		const { playId } = getPlayReq(req);
 
 		try {
-			const play = await Play.getOnePlay(playId)
+			const play = await Play.getOnePlay(playId);
 
-			res.status(200).json(play)
+			res.status(200).json(play);
 		} catch (error) {
 			handleError(res, error, 'Getting a play');
 		}
@@ -50,15 +49,22 @@ const playControllers = {
 
 	getAll: async (req, res) => {
 		try {
-			const playbook = await Play.getAllPlays()
+			const playbook = await Play.getAllPlays();
 
-			res.status(200).json(playbook)
+			res.status(200).json(playbook);
 		} catch (error) {
 			handleError(res, error, 'Getting all plays');
 		}
 	},
 	deleteOne: async (req, res) => {
+		const { playId } = getPlayReq(req);
+
 		try {
+			const deleted = await Play.deleteOnePlay(playId);
+			console.log(deleted._id)
+			await Formation.updateFormation(deleted.formation, { $pull: { plays: deleted._id } })
+
+			res.status(200).json(deleted);
 		} catch (error) {
 			handleError(res, error, 'Deleting a play');
 		}
