@@ -7,14 +7,14 @@ const UserClass = {
 		return response;
 	},
 
-	findUserByEmail: async email => {
-		const response = await User.findOne(email);
+	findUser: async input => {
+		const response = await User.findOne(input);
 
 		return response;
 	},
 
-	deleteUserByEmail: async email => {
-		const response = await User.deleteOne(email);
+	deleteUser: async input => {
+		const response = await User.deleteOne(input);
 
 		return response;
 	},

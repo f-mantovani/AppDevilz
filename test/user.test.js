@@ -25,7 +25,7 @@ describe('test the DevilzApp API', () => {
 	});
 
 	afterAll(async () => {
-		await User.deleteUserByEmail({ email: 'admin@admin.com' });
+		await User.deleteUser({ email: 'admin@admin.com' });
 
 		disconnect();
 	});

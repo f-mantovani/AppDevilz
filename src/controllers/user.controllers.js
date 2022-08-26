@@ -14,7 +14,7 @@ const userControllers = {
 
 			validateUserInput(email, password, name);
 
-			const userFromDB = await User.findUserByEmail({ email });
+			const userFromDB = await User.findUser({ email });
 
 			validateCredential(userFromDB, 400, 'User already exists');
 
@@ -24,7 +24,7 @@ const userControllers = {
 
 			const newUser = await User.createUser(user);
 
-			const userCreated = await User.findUserByEmail({ email });
+			const userCreated = await User.findUser({ email });
 
 			const userDisplay = {
 				name: userCreated.name,
@@ -43,7 +43,7 @@ const userControllers = {
 
 			validateUserInput(email, password);
 
-			const userFromDB = await User.findUserByEmail({ email });
+			const userFromDB = await User.findUser({ email });
 
 			validateCredential(!userFromDB, 400, 'User and/or Password incorrect');
 
@@ -72,6 +72,10 @@ const userControllers = {
 		const updatedInfo = { name, email, password, profileImage }
 
 		try {
+			const sameUser = req.user.userId === req.params.userId
+
+			validateCredential(!sameUser, 401, "You can't edit other's profile")
+
 			const updatedPlayer = await User.update(userId, updatedInfo)
 
 			res.status(200).json(updatedPlayer)
