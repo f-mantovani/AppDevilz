@@ -66,6 +66,36 @@ const userControllers = {
 			handleError(res, error, 'Login');
 		}
 	},
+
+	autoUpdate: async (req, res) => {
+		const { name, email, password, profileImage, userId } = getUserReq(req)
+		const updatedInfo = { name, email, password, profileImage }
+
+		try {
+			const updatedPlayer = await User.update(userId, updatedInfo)
+
+			res.status(200).json(updatedPlayer)
+		} catch (error) {
+			handleError(res, error, 'Auto updating')
+		}
+	},
+
+	staffUpdate: async (req, res) => {
+		const { shirtNumber, isPlayerActive, isCT, isAdmin, isAccepted, userId } = getUserReq(req)
+		const updatedInfo = { shirtNumber, isPlayerActive, isCT, isAdmin, isAccepted }
+		
+		try {
+			const updatedPlayer = await User.update(userId, updatedInfo)
+
+			res.status(200).json(updatedPlayer)
+		} catch (error) {
+			handleError(res, error, 'Staff update')
+		}
+	},
+
+
+
+
 };
 
 export default userControllers;

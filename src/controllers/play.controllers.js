@@ -61,8 +61,8 @@ const playControllers = {
 
 		try {
 			const deleted = await Play.deleteOnePlay(playId);
-			console.log(deleted._id)
-			await Formation.updateFormation(deleted.formation, { $pull: { plays: deleted._id } })
+
+			await Formation.updateFormation(deleted.formation, { $pull: { plays: deleted._id } });
 
 			res.status(200).json(deleted);
 		} catch (error) {

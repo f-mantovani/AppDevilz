@@ -1,5 +1,6 @@
 import Formation from '../database/services/formations.service.js';
 import Play from '../database/services/plays.service.js';
+
 import { getFormationReq } from './helperFunctions/formationHelpers/getFormationReq.js';
 import { handleError } from './helperFunctions/generalFunctions/errorHandlingFunction.js';
 
@@ -35,6 +36,8 @@ const formationController = {
 	getAll: async (req, res) => {
 		try {
 			const formations = await Formation.getAllFormations();
+
+			console.log(formations);
 
 			res.status(200).json(formations);
 		} catch (error) {

@@ -1,28 +1,33 @@
-import User from '../models/User.model.js'
+import User from '../models/User.model.js';
 
 const UserClass = {
-    createUser: async (user) => {
+	createUser: async user => {
+		const response = await User.create(user);
 
-        const response = await User.create(user)
+		return response;
+	},
 
-        return response
-        
-    },
+	findUserByEmail: async email => {
+		const response = await User.findOne(email);
 
-    findUserByEmail: async (email) => {
+		return response;
+	},
 
-        const response = await User.findOne(email)
+	deleteUserByEmail: async email => {
+		const response = await User.deleteOne(email);
 
-        return response
-    },
+		return response;
+	},
 
-    deleteUserByEmail: async (email) => {
-        // console.log(email)
-        const response = await User.deleteOne(email);
+	update: async (id, updateInfo) => {
+		const response = await User.findByIdAndUpdate(id, updateInfo, {
+			new: true,
+			runValidators: true,
+			context: 'query',
+		});
 
-        return response
-    }
- 
+		return response;
+	},
 };
 
 export default UserClass;

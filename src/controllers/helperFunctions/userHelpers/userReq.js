@@ -1,18 +1,28 @@
+export const getUserReq = ({ body, params, file }) => {
+	const payload = {
+		name: body.name,
 
-export const getUserReq = ({ body }) => {
-    const payload = {
+		email: body.email,
 
-        name: body.name,
+		password: body.password,
 
-        email: body.email,
+		profileImage: body.profileImage,
         
-        password: body.password,
+		shirtNumber: body.shirtNumber,
 
-    }
+		isPlayerActive: body.isPlayerActive,
 
-    return payload
-}
+		isCT: body.isCT,
 
+		isAdmin: body.isAdmin,
+        
+		isAccepted: body.isAccepted,
 
+		userId: params.userId,
 
+		// configuration for cloudinary
+		path: file ? file.path : null,
+	};
 
+	return payload;
+};

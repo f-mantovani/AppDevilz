@@ -19,5 +19,4 @@ export const validateEditPrivilege = (req, res, next) => {
 		handleError(res, error, 'Edit privilege middleware')
 	}
 
-
 };
