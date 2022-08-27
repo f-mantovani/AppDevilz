@@ -97,8 +97,11 @@ const userControllers = {
 		}
 	},
 
+	updateImage: async (req, res) => {
+		const { path } = getUserReq(req)
 
-
+		res.status(201).json(path)
+	},
 
 };
 

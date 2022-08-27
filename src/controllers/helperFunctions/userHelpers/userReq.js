@@ -1,4 +1,4 @@
-export const getUserReq = ({ body, params, file }) => {
+export const getUserReq = ({ body, params, file, user }) => {
 	const payload = {
 		name: body.name,
 
@@ -19,6 +19,8 @@ export const getUserReq = ({ body, params, file }) => {
 		isAccepted: body.isAccepted,
 
 		userId: params.userId,
+		
+		userId2: user.userId,
 
 		// configuration for cloudinary
 		path: file ? file.path : null,
