@@ -16,10 +16,6 @@ export const isAuthenticated = (req, res, next) => {
 
 		next();
 	} catch (error) {
-		if (error.message === 'jwt expired') {
-			handleError(res, error, 'JWT Middleware');
-		}
-
 		handleError(res, error, 'JWT Middleware');
 	}
 };

@@ -68,6 +68,10 @@ const userControllers = {
 		}
 	},
 
+	verify: async (req, res) => {
+		if(req.user) return res.status(200).json(req.user)
+	},
+
 	autoUpdate: async (req, res) => {
 		const { name, email, password, profileImage, userId } = getUserReq(req)
 		const updatedInfo = { name, email, password, profileImage }
