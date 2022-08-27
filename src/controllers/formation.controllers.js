@@ -69,6 +69,12 @@ const formationController = {
 			handleError(res, error, 'Deleting one formation');
 		}
 	},
+
+	updateImage: async (req, res) => {
+		const { path } = getFormationReq(req)
+
+		res.status(201).json(path)
+	},
 };
 
 export default formationController;

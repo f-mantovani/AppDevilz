@@ -1,4 +1,4 @@
-export const getFormationReq = ({ body, params}) => {
+export const getFormationReq = ({ body, params, file}) => {
 	const payload = {
 		name: body.name,
 
@@ -11,6 +11,9 @@ export const getFormationReq = ({ body, params}) => {
 		liveImage: body.liveImage,
 
     formationId: params.formationId,
+
+		//configuration for the Cloudinary
+		path: file ? file.path : null,
 
 	};
 
