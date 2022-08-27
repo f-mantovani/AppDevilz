@@ -56,6 +56,7 @@ const playControllers = {
 			handleError(res, error, 'Getting all plays');
 		}
 	},
+
 	deleteOne: async (req, res) => {
 		const { playId } = getPlayReq(req);
 
@@ -68,6 +69,12 @@ const playControllers = {
 		} catch (error) {
 			handleError(res, error, 'Deleting a play');
 		}
+	},
+
+	updateImage: async (req, res) => {
+		const { path } = getPlayReq(req)
+
+		res.status(201).json(path)
 	},
 };
 

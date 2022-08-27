@@ -1,6 +1,6 @@
-import { Router } from 'express';
-
 import formationCrontrollers from '../controllers/formation.controllers.js';
+
+import { Router } from 'express';
 import { validateEditPrivilege } from '../middleware/validateEditPrivilege.middleware.js';
 
 const router = Router();

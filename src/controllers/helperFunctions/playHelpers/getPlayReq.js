@@ -1,4 +1,4 @@
-export const getPlayReq = ({ body, params }) => {
+export const getPlayReq = ({ body, params, file}) => {
 	const payload = {
 		name: body.name,
 
@@ -9,6 +9,9 @@ export const getPlayReq = ({ body, params }) => {
 		playImage: body.playImage,
 
     playId: params.playId,
+
+		// configuration for cloudinary
+		path: file ? file.path : null,
 	};
 
 	return payload;

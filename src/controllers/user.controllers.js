@@ -1,3 +1,5 @@
+import User from '../database/services/user.service.js';
+
 import { getUserReq } from './helperFunctions/userHelpers/userReq.js';
 import { validateUserInput } from './helperFunctions/userHelpers/validateUserInput.js'
 import { validateCredential } from './helperFunctions/userHelpers/validateCredentials.js'
@@ -5,7 +7,6 @@ import { encryptPassword, validateLogin } from './helperFunctions/userHelpers/pa
 import { generateToken  } from './helperFunctions/userHelpers/generateToken.js'
 import { handleError } from './helperFunctions/generalFunctions/errorHandlingFunction.js';
 
-import User from '../database/services/user.service.js';
 
 const userControllers = {
 	signup: async (req, res) => {
