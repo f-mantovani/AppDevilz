@@ -12,7 +12,6 @@ const router = Router()
 // Server checking 
 router.get('/healthcheck', (req, res) => {res.sendStatus(200)})
 
-
 router.use('/auth', authRoutes)
 
 router.use(isAuthenticated)

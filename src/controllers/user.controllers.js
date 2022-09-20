@@ -62,7 +62,7 @@ const userControllers = {
 
 			const token = await generateToken(payload);
 
-			return res.status(200).json({ token });
+			return res.status(200).json({ token, payload });
 		} catch (error) {
 			handleError(res, error, 'Login');
 		}
